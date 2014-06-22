@@ -1,0 +1,9 @@
+
+{% set server = salt['grains.filter_by']({
+    'Debian': {
+        'pkgs': [ 'git-core', 'gcc', 'tesseract-ocr', 'unpaper', 'python-virtualenv', 'ghostscript', 'libjpeg-dev', 'libpng-dev', 'poppler-utils', 'python-dev', 'libpq-dev', 'python-psycopg2' ]
+    },
+    'RedHat': {
+        'pkgs': []
+    },
+}, merge=salt['pillar.get']('mayan:server')) %}

@@ -1,0 +1,27 @@
+#!/bin/bash
+{%- set server = pillar.mayan.server %}
+
+NAME="mayan"
+DJANGODIR=/srv/mayan/site/mayan/mayan
+USER=mayan
+GROUP=mayan
+NUM_WORKERS={{ server.workers }}
+DJANGO_SETTINGS_MODULE=mayan.settings
+DJANGO_WSGI_MODULE=wsgi
+
+#echo "Starting $NAME as `whoami`"
+
+# Activate the virtual environment
+cd $DJANGODIR
+source /srv/mayan/bin/activate
+export DJANGO_SETTINGS_MODULE=$DJANGO_SETTINGS_MODULE
+export PYTHONPATH=$DJANGODIR:$PYTHONPATH
+
+# Start your Django Unicorn
+# Programs meant to be run under supervisor should not daemonize themselves (do not use --daemon)
+exec /srv/mayan/bin/gunicorn ${DJANGO_WSGI_MODULE}:application \
+  --name $NAME \
+  --workers $NUM_WORKERS \
+  --user=$USER --group=$GROUP \
+  --log-level=debug \
+  --bind={{ server.bind.address }}:{{ server.bind.port }}

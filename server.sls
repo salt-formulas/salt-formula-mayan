@@ -83,12 +83,19 @@ mayan_dirs:
     - file: /srv/mayan/site/manage.py
 {#    - file: /srv/mayan/site/wsgi.py#}
 
+/srv/mayan/site/mayan/requirements:
+  file.symlink:
+  - target: /srv/mayan/site/requirements
+  - require:
+    - git: {{ pillar.mayan.server.source.address }}
+
 mayan_sync_database:
   cmd.run:
   - name: python manage.py syncdb --noinput
   - cwd: /srv/mayan/site
   - require:
     - file: /srv/mayan/site/mayan/settings.py
+    - file: /srv/mayan/site/mayan/requirements
 
 mayan_migrate_database:
   cmd.run:

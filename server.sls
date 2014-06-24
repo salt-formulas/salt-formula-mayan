@@ -32,6 +32,7 @@ mayan_dirs:
     - /srv/mayan/static
     - /srv/mayan/media
     - /srv/mayan/logs
+    - /srv/mayan/site/mayan
   - user: mayan
   - group: mayan
   - mode: 777
@@ -39,18 +40,9 @@ mayan_dirs:
   - require:
     - virtualenv: /srv/mayan
 
-/srv/mayan/logs/mayan.log:
-  file.managed:
-  - template: jinja
-  - user: mayan
-  - group: mayan
-  - mode: 755
-  - require:
-    - file: mayan_dirs
-
 {{ pillar.mayan.server.source.address }}:
   git.latest:
-  - target: /srv/mayan/site
+  - target: /srv/mayan/app
   - rev: {{ pillar.mayan.server.source.rev }}
   - require:
     - virtualenv: /srv/mayan
@@ -83,11 +75,13 @@ mayan_dirs:
     - file: /srv/mayan/site/manage.py
 {#    - file: /srv/mayan/site/wsgi.py#}
 
+{#
 /srv/mayan/site/mayan/requirements:
   file.symlink:
   - target: /srv/mayan/site/requirements
   - require:
     - git: {{ pillar.mayan.server.source.address }}
+#}
 
 mayan_sync_database:
   cmd.run:
@@ -95,7 +89,6 @@ mayan_sync_database:
   - cwd: /srv/mayan/site
   - require:
     - file: /srv/mayan/site/mayan/settings.py
-    - file: /srv/mayan/site/mayan/requirements
 
 mayan_migrate_database:
   cmd.run:

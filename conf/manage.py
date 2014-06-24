@@ -5,9 +5,11 @@ import os
 
 from os.path import join, dirname, abspath, normpath
 
-path = normpath(join(abspath(dirname(__file__)), '..'))
+path = '/srv/mayan'
 
 sys.path.append(join(path, 'lib', 'python2.7', 'site-packages'))
+sys.path.append(join(path, 'app'))
+sys.path.append(join(path, 'site'))
 
 from django.core.management import execute_from_command_line
 

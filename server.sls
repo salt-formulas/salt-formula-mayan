@@ -10,7 +10,7 @@ mayan_packages:
 
 /srv/mayan:
   virtualenv.manage:
-  - system_site_packages: True
+  - system_site_packages: False
   - requirements: salt://mayan/conf/requirements.txt
   - require:
     - pkg: mayan_packages

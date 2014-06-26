@@ -33,3 +33,4 @@ unicode-slugify==0.1
 wsgiref==0.1.2
 
 gunicorn>=18.0
+psycopg2==2.4.5

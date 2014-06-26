@@ -31,3 +31,4 @@ Automated OCR of documents, automatic categorization, flexible metadata, extensi
 * http://openode.readthedocs.org/
 * https://github.com/openode/mayan_pyro_api
 * http://mayan.readthedocs.org/en/latest/intro/installation.html
+* https://openode.readthedocs.org/en/latest/install_mayan_server.html

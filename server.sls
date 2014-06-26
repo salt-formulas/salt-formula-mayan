@@ -1,6 +1,5 @@
 {% from "mayan/map.jinja" import server with context %}
-
-{%- if pillar.mayan.server.enabled %}
+{%- if server.enabled %}
 
 include:
 - git
@@ -32,7 +31,7 @@ mayan_dirs:
     - /srv/mayan/static
     - /srv/mayan/media
     - /srv/mayan/logs
-    - /srv/mayan/site/mayan
+    - /srv/mayan/site
   - user: mayan
   - group: mayan
   - mode: 777
@@ -66,7 +65,7 @@ mayan_dirs:
   - require:
     - git: {{ pillar.mayan.server.source.address }}
 
-/srv/mayan/site/mayan/settings.py:
+/srv/mayan/app/mayan/settings.py:
   file.managed:
   - source: salt://mayan/conf/settings.py
   - template: jinja
@@ -87,8 +86,6 @@ mayan_sync_database:
   cmd.run:
   - name: python manage.py syncdb --noinput
   - cwd: /srv/mayan/site
-  - require:
-    - file: /srv/mayan/site/mayan/settings.py
 
 mayan_migrate_database:
   cmd.run:

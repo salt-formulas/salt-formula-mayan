@@ -2,7 +2,7 @@
 {%- set server = pillar.mayan.server %}
 
 NAME="mayan"
-DJANGODIR=/srv/mayan/site
+DJANGODIR=/srv/mayan/app
 USER=mayan
 GROUP=mayan
 NUM_WORKERS={{ server.workers }}
@@ -15,7 +15,7 @@ DJANGO_WSGI_MODULE=wsgi
 cd $DJANGODIR
 source /srv/mayan/bin/activate
 export DJANGO_SETTINGS_MODULE=$DJANGO_SETTINGS_MODULE
-export PYTHONPATH=$DJANGODIR:/srv/mayan/app/mayan:$PYTHONPATH
+export PYTHONPATH=$DJANGODIR:$PYTHONPATH
 
 # Start your Django Unicorn
 # Programs meant to be run under supervisor should not daemonize themselves (do not use --daemon)

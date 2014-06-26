@@ -39,10 +39,10 @@ mayan_dirs:
   - require:
     - virtualenv: /srv/mayan
 
-{{ pillar.mayan.server.source.address }}:
+{{ server.source.address }}:
   git.latest:
   - target: /srv/mayan/app
-  - rev: {{ pillar.mayan.server.source.rev }}
+  - rev: {{ server.source.rev }}
   - require:
     - virtualenv: /srv/mayan
     - pkg: git_packages
@@ -72,15 +72,12 @@ mayan_dirs:
   - mode: 644
   - require:
     - file: /srv/mayan/site/manage.py
-{#    - file: /srv/mayan/site/wsgi.py#}
 
-{#
-/srv/mayan/site/mayan/requirements:
+/srv/mayan/app/mayan/requirements:
   file.symlink:
-  - target: /srv/mayan/site/requirements
+  - target: /srv/mayan/app/requirements
   - require:
-    - git: {{ pillar.mayan.server.source.address }}
-#}
+    - git: {{ server.source.address }}
 
 mayan_sync_database:
   cmd.run:
@@ -101,16 +98,5 @@ mayan_collect_static:
   - require:
     - cmd: mayan_migrate_database
     - file: /srv/mayan/static
-{#
-mayan_services:
-  supervisord.running:
-  - names:
-    - mayan_web
-    - mayan_worker
-  - restart: True
-  - user: root
-  - cwd: /srv/mayan/site
-  - require:
-    - cmd: mayan_migrate_database
-#}
+
 {%- endif %}

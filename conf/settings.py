@@ -151,6 +151,7 @@ INSTALLED_APPS = (
     'mptt',
     'compressor',
     'rest_framework',
+    'gunicorn',
 # Base generic
     'permissions',
     'project_setup',

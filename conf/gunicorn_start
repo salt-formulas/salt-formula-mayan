@@ -7,7 +7,7 @@ USER=mayan
 GROUP=mayan
 NUM_WORKERS={{ server.workers }}
 DJANGO_SETTINGS_MODULE=mayan.settings
-DJANGO_WSGI_MODULE=wsgi
+DJANGO_WSGI_MODULE=mayan.wsgi
 
 #echo "Starting $NAME as `whoami`"
 

@@ -32,6 +32,8 @@ mayan_dirs:
     - /srv/mayan/media
     - /srv/mayan/logs
     - /srv/mayan/site
+    - /srv/mayan/app/gpg_home
+    - /srv/mayan/app/document_storage
   - user: mayan
   - group: mayan
   - mode: 777

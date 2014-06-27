@@ -32,14 +32,14 @@ mayan_dirs:
     - /srv/mayan/media
     - /srv/mayan/logs
     - /srv/mayan/site
-    - /srv/mayan/app/gpg_home
-    - /srv/mayan/app/document_storage
   - user: mayan
   - group: mayan
   - mode: 777
   - makedirs: true
   - require:
     - virtualenv: /srv/mayan
+
+
 
 {{ server.source.address }}:
   git.latest:
@@ -48,6 +48,21 @@ mayan_dirs:
   - require:
     - virtualenv: /srv/mayan
     - pkg: git_packages
+  - require_in:
+    - file: app_dirs
+
+
+app_dirs:
+  file.directory:
+  - names:
+    - /srv/mayan/app/gpg_home
+    - /srv/mayan/app/document_storage
+  - user: mayan
+  - group: mayan
+  - mode: 777
+  - makedirs: true
+  - require:
+    - virtualenv: /srv/mayan
 
 /srv/mayan/bin/gunicorn_start:
   file.managed:

@@ -1,4 +1,5 @@
 {% from "mayan/map.jinja" import server with context %}
+
 {%- if server.enabled %}
 
 include:
@@ -38,8 +39,6 @@ mayan_dirs:
   - makedirs: true
   - require:
     - virtualenv: /srv/mayan
-
-
 
 {{ server.source.address }}:
   git.latest:
@@ -115,5 +114,12 @@ mayan_collect_static:
   - require:
     - cmd: mayan_migrate_database
     - file: /srv/mayan/static
+
+mayan_web_service:
+  supervisord.running:
+  - names:
+    - mayan_server
+  - restart: True
+  - user: root
 
 {%- endif %}

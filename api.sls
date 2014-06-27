@@ -20,4 +20,11 @@ https://github.com/openode/mayan_pyro_api.git:
   - require:
     - git: https://github.com/openode/mayan_pyro_api.git
 
+mayan_api_service:
+  supervisord.running:
+  - names:
+    - pyro_api
+  - restart: True
+  - user: root
+
 {%- endif %}

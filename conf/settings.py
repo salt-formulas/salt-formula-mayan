@@ -1,4 +1,5 @@
 {% from "mayan/map.jinja" import server with context %}
+{% from "mayan/map.jinja" import api with context %}
 
 # Django settings for mayan project.
 import os
@@ -195,6 +196,9 @@ INSTALLED_APPS = (
     'registration',
 # Has to be last so the other apps can register it's signals
     'signaler',
+    {%- if api.enabled %}
+    'pyro_api',
+    {%- endif %}
 )
 
 TEMPLATE_CONTEXT_PROCESSORS = (

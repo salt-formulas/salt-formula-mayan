@@ -24,6 +24,13 @@ Automated OCR of documents, automatic categorization, flexible metadata, extensi
           name: 'mayan'
           password: 'pass'
           user: 'mayan'
+      api:
+        enabled: true
+        hmac_key: d2d00896183011e28eb950e5493b99d90
+        uri_id: 1sadfasfg468h7j9g7j9h78gk6g54fg6f
+        bind:
+          port: 33333
+          host: 0.0.0.0
 
 ## Read more
 

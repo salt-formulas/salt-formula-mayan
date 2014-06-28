@@ -89,6 +89,8 @@ app_dirs:
   - require:
     - file: /srv/mayan/site/manage.py
 
+{% set activate = "source /srv/mayan/bin/activate &&" %}
+
 /srv/mayan/app/mayan/requirements:
   file.symlink:
   - target: /srv/mayan/app/requirements
@@ -97,19 +99,19 @@ app_dirs:
 
 mayan_sync_database:
   cmd.run:
-  - name: python manage.py syncdb --noinput
+  - name: {{ activate }} python manage.py syncdb --noinput
   - cwd: /srv/mayan/site
 
 mayan_migrate_database:
   cmd.run:
-  - name: python manage.py migrate
+  - name: {{ activate }} python manage.py migrate
   - cwd: /srv/mayan/site
   - require:
     - cmd: mayan_sync_database
 
 mayan_collect_static:
   cmd.run:
-  - name: python manage.py collectstatic --noinput
+  - name: {{ activate }} python manage.py collectstatic --noinput
   - cwd: /srv/mayan/site
   - require:
     - cmd: mayan_migrate_database

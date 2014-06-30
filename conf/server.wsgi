@@ -8,6 +8,12 @@ https://docs.djangoproject.com/en/1.6/howto/deployment/wsgi/
 """
 import sys
 import os
+from os.path import join, dirname, abspath, normpath
+
+path = '/srv/mayan'
+
+sys.path.append(join(path, 'lib', 'python2.7', 'site-packages'))
+sys.path.append(join(path, 'app'))
 
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "mayan.settings")
 sys.path.append('/srv/mayan/app/mayan_pyro_api/pyro_api')

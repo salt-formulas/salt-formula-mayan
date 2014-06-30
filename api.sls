@@ -11,6 +11,8 @@ https://github.com/openode/mayan_pyro_api.git:
   - require:
     - virtualenv: /srv/mayan
     - pkg: git_packages
+  - require_in:
+    - cmd: mayan_sync_database
 
 /srv/mayan/app/mayan_pyro_api/pyro_api/settings_local.py:
   file.managed:
@@ -20,7 +22,7 @@ https://github.com/openode/mayan_pyro_api.git:
   - require:
     - git: https://github.com/openode/mayan_pyro_api.git
 
-/srv/mayan/app/mayan/wsgi.py:
+/srv/mayan/site/wsgi.py:
   file.managed:
   - source: salt://mayan/conf/server.wsgi
   - template: jinja

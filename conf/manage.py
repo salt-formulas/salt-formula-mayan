@@ -17,5 +17,5 @@ sys.path.append(join(path, 'app/mayan_pyro_api'))
 from django.core.management import execute_from_command_line
 
 if __name__ == "__main__":
-    os.environ.setdefault("DJANGO_SETTINGS_MODULE", "mayan.settings")
+    os.environ.setdefault("DJANGO_SETTINGS_MODULE", "mayan.settings.local_settings")
     execute_from_command_line(sys.argv)

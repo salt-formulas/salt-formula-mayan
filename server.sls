@@ -81,7 +81,7 @@ app_dirs:
   - require:
     - git: {{ server.source.address }}
 
-/srv/mayan/app/mayan/settings.py:
+/srv/mayan/app/mayan/settings/local_settings.py:
   file.managed:
   - source: salt://mayan/conf/settings.py
   - template: jinja
@@ -89,11 +89,13 @@ app_dirs:
   - require:
     - file: /srv/mayan/site/manage.py
 
+{#
 /srv/mayan/app/mayan/requirements:
   file.symlink:
   - target: /srv/mayan/app/requirements
   - require:
     - git: {{ server.source.address }}
+#}
 
 mayan_sync_database:
   cmd.run:

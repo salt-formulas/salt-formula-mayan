@@ -15,7 +15,7 @@ path = '/srv/mayan'
 sys.path.append(join(path, 'lib', 'python2.7', 'site-packages'))
 sys.path.append(join(path, 'app'))
 
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "mayan.settings")
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "mayan.settings.local_settings")
 sys.path.append('/srv/mayan/app/mayan_pyro_api/pyro_api')
 
 from django.core.wsgi import get_wsgi_application

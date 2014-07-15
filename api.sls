@@ -14,6 +14,10 @@ https://github.com/openode/mayan_pyro_api.git:
   - require_in:
     - cmd: mayan_sync_database
 
+/srv/mayan/app/mayan/apps/pyro_api:
+  file.symlink:
+    - target: /srv/mayan/app/mayan_pyro_api/pyro_api
+
 /srv/mayan/app/mayan_pyro_api/pyro_api/settings_local.py:
   file.managed:
   - source: salt://mayan/conf/api_settings.py
@@ -22,7 +26,7 @@ https://github.com/openode/mayan_pyro_api.git:
   - require:
     - git: https://github.com/openode/mayan_pyro_api.git
 
-/srv/mayan/site/wsgi.py:
+/srv/mayan/app/mayan/wsgi.py:
   file.managed:
   - source: salt://mayan/conf/server.wsgi
   - template: jinja

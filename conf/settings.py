@@ -17,7 +17,7 @@ TEMPLATE_DEBUG = True
 ALLOWED_HOSTS = []
 
 {%- if api.enabled %}
-    INSTALLED_APPS +=('pyro_api',)
+INSTALLED_APPS +=('pyro_api',)
 {%- endif %}
 
 DATABASES = {

@@ -26,6 +26,7 @@ https://github.com/openode/mayan_pyro_api.git:
   - require:
     - git: https://github.com/openode/mayan_pyro_api.git
 
+{#
 /srv/mayan/app/mayan/wsgi.py:
   file.managed:
   - source: salt://mayan/conf/server.wsgi
@@ -33,6 +34,7 @@ https://github.com/openode/mayan_pyro_api.git:
   - mode: 644
   - require:
     - git: https://github.com/openode/mayan_pyro_api.git
+#}
 
 mayan_api_service:
   supervisord.running:

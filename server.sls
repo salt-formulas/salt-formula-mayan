@@ -33,9 +33,13 @@ mayan_dirs:
     - /srv/mayan/media
     - /srv/mayan/logs
     - /srv/mayan/site
+    - /srv/mayan/document_storage
+    - /srv/mayan/document_storage/document_storage
+    - /srv/mayan/document_storage/image_cache
+    - /srv/mayan/document_storage/gpg_home
   - user: mayan
   - group: mayan
-  - mode: 777
+  - mode: 775
   - makedirs: true
   - require:
     - virtualenv: /srv/mayan

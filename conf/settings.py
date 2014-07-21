@@ -46,3 +46,5 @@ USE_TZ = True
 
 PROJECT_TITLE = 'Mayan EDMS'
 PROJECT_NAME = 'mayan'
+
+MEDIA_ROOT = "/srv/mayan/document_storage"

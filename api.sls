@@ -13,6 +13,7 @@ git@repo1.robotice.cz:django/mayan-pyro-api.git:
     - pkg: git_packages
   - require_in:
     - cmd: mayan_sync_database
+    - file: /srv/mayan/app/mayan_pyro_api/pyro_api/settings_local.py
 
 /srv/mayan/app/mayan/apps/pyro_api:
   file.symlink:
@@ -23,8 +24,6 @@ git@repo1.robotice.cz:django/mayan-pyro-api.git:
   - source: salt://mayan/conf/api_settings.py
   - template: jinja
   - mode: 644
-  - require:
-    - file: /srv/mayan/app/mayan_pyro_api
 
 mayan_api_service:
   supervisord.running:

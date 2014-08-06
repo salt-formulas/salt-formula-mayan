@@ -24,7 +24,7 @@ git@repo1.robotice.cz:django/mayan-pyro-api.git:
   - template: jinja
   - mode: 644
   - require:
-    - git@repo1.robotice.cz:django/mayan-pyro-api.git
+    - file: /srv/mayan/app/mayan_pyro_api
 
 mayan_api_service:
   supervisord.running:

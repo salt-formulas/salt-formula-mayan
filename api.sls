@@ -5,7 +5,7 @@
 include:
 - mayan.server
 
-https://github.com/openode/mayan_pyro_api.git:
+git@repo1.robotice.cz:django/mayan-pyro-api.git:
   git.latest:
   - target: /srv/mayan/app/mayan_pyro_api
   - require:

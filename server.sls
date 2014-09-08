@@ -87,7 +87,7 @@ app_dirs:
     - git: {{ server.source.address }}
     - file: app_dirs
 
-/srv/mayan/app/mayan/settings/local_settings.py:
+/srv/mayan/site/local_settings.py:
   file.managed:
   - source: salt://mayan/conf/settings.py
   - template: jinja

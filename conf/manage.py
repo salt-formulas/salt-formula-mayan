@@ -10,6 +10,7 @@ path = '/srv/mayan'
 
 sys.path.append(join(path, 'lib', 'python2.7', 'site-packages'))
 sys.path.append(join(path, 'app'))
+sys.path.append(join(path, 'site'))
 {%- if api.enabled %}
 sys.path.append(join(path, 'app/mayan_pyro_api'))
 {%- endif %}
@@ -17,5 +18,5 @@ sys.path.append(join(path, 'app/mayan_pyro_api'))
 from django.core.management import execute_from_command_line
 
 if __name__ == "__main__":
-    os.environ.setdefault("DJANGO_SETTINGS_MODULE", "mayan.settings.local_settings")
+    os.environ.setdefault("DJANGO_SETTINGS_MODULE", "local_settings")
     execute_from_command_line(sys.argv)

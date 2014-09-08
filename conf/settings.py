@@ -3,7 +3,7 @@
 
 from __future__ import absolute_import
 
-from mayan.settings.base import *
+from mayan.settings import *
 
 
 # SECURITY WARNING: keep the secret key used in production secret!

@@ -50,3 +50,10 @@ PROJECT_NAME = 'mayan'
 MEDIA_ROOT = "/srv/mayan/document_storage" #document_storage
 
 MAIN_DISABLE_HOME_VIEW = True
+
+"""
+# Supposing the 'Sample index' internal name is 'sample_index'
+DOCUMENT_INDEXING_FILESYSTEM_SERVING = {
+  'sample_index': '/srv/samba/tnsjachym/',
+}
+"""

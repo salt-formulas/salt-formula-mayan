@@ -1,7 +1,7 @@
 
 {% set server = salt['grains.filter_by']({
     'Debian': {
-        'pkgs': [ 'git-core', 'gcc', 'tesseract-ocr', 'unpaper', 'python-virtualenv', 'ghostscript', 'libjpeg-dev', 'libpng-dev', 'poppler-utils', 'python-dev', 'libpq-dev', "proper", "tesseract-oct-*", "tesseract-ocr-ces", "tesseract-ocr", "imagemagick", "graphicsmagick", "unpaper", "pdftohtml", "unoconv" ]
+        'pkgs': [ 'git-core', 'gcc', 'tesseract-ocr', 'unpaper', 'python-virtualenv', 'ghostscript', 'libjpeg-dev', 'libpng-dev', 'poppler-utils', 'python-dev', 'libpq-dev', "tesseract-ocr-ces", "tesseract-ocr", "imagemagick", "graphicsmagick", "unpaper", "pdftohtml", "unoconv" ]
     },
     'RedHat': {
         'pkgs': []

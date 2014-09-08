@@ -10,7 +10,7 @@ path = '/srv/mayan'
 
 sys.path.append(join(path, 'lib', 'python2.7', 'site-packages'))
 sys.path.append(join(path, 'app'))
-sys.path.append(join(path, 'site'))
+sys.path.append('/srv/mayan/site')
 {%- if api.enabled %}
 sys.path.append(join(path, 'app/mayan_pyro_api'))
 {%- endif %}

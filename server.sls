@@ -60,6 +60,7 @@ app_dirs:
   - names:
     - /srv/mayan/gpg_home
     - /srv/mayan/document_storage
+    - /srv/mayan/site
   - user: mayan
   - group: mayan
   - mode: 777
@@ -84,6 +85,7 @@ app_dirs:
   - mode: 755
   - require:
     - git: {{ server.source.address }}
+    - file: app_dirs
 
 /srv/mayan/app/mayan/settings/local_settings.py:
   file.managed:
@@ -92,14 +94,6 @@ app_dirs:
   - mode: 644
   - require:
     - file: /srv/mayan/site/manage.py
-
-{#
-/srv/mayan/app/mayan/requirements:
-  file.symlink:
-  - target: /srv/mayan/app/requirements
-  - require:
-    - git: {{ server.source.address }}
-#}
 
 mayan_sync_database:
   cmd.run:

@@ -6,7 +6,7 @@ DJANGODIR=/srv/mayan/app
 USER=mayan
 GROUP=mayan
 NUM_WORKERS={{ server.workers }}
-DJANGO_SETTINGS_MODULE=mayan.settings.local_settings
+DJANGO_SETTINGS_MODULE=local_settings
 DJANGO_WSGI_MODULE=mayan.wsgi
 
 #echo "Starting $NAME as `whoami`"
@@ -16,6 +16,7 @@ cd $DJANGODIR
 source /srv/mayan/bin/activate
 export DJANGO_SETTINGS_MODULE=$DJANGO_SETTINGS_MODULE
 export PYTHONPATH=$DJANGODIR:$PYTHONPATH
+export PYTHONPATH=:/srv/mayan/site
 
 # Start your Django Unicorn
 # Programs meant to be run under supervisor should not daemonize themselves (do not use --daemon)

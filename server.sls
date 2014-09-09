@@ -97,19 +97,19 @@ app_dirs:
 
 mayan_sync_database:
   cmd.run:
-  - name: source /srv/robotice_control/bin/activate; python manage.py syncdb --noinput
+  - name: source /srv/mayan/bin/activate; python manage.py syncdb --noinput
   - cwd: /srv/mayan/site
 
 mayan_migrate_database:
   cmd.run:
-  - name: source /srv/robotice_control/bin/activate; python manage.py migrate
+  - name: source /srv/mayan/bin/activate; python manage.py migrate
   - cwd: /srv/mayan/site
   - require:
     - cmd: mayan_sync_database
 
 mayan_collect_static:
   cmd.run:
-  - name: source /srv/robotice_control/bin/activate; python manage.py collectstatic --noinput
+  - name: source /srv/mayan/bin/activate; python manage.py collectstatic --noinput
   - cwd: /srv/mayan/site
   - require:
     - cmd: mayan_migrate_database

@@ -16,7 +16,7 @@ TEMPLATE_DEBUG = True
 
 ALLOWED_HOSTS = []
 
-{%- if api.enabled %}
+{%- if server.api is defined and api.enabled %}
 INSTALLED_APPS +=('pyro_api',)
 {%- endif %}
 
@@ -47,9 +47,13 @@ USE_TZ = True
 PROJECT_TITLE = 'Mayan EDMS'
 PROJECT_NAME = 'mayan'
 
-MEDIA_ROOT = "/srv/mayan/document_storage" #document_storage
+MEDIA_ROOT = "/srv/jachym/media" #document_storage
 
 MAIN_DISABLE_HOME_VIEW = True
+
+{%- if server.storage_location is defined %}
+STORAGE_FILESTORAGE_LOCATION = "{{ server.storage_location }}" #"/srv/documents"
+{%- endif %}
 
 """
 # Supposing the 'Sample index' internal name is 'sample_index'

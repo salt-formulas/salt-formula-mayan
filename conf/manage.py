@@ -1,4 +1,5 @@
 {% from "mayan/map.jinja" import api with context %}
+{% from "mayan/map.jinja" import server with context %}
 #!/usr/bin/env python
 
 import sys
@@ -11,7 +12,7 @@ path = '/srv/mayan'
 sys.path.append(join(path, 'lib', 'python2.7', 'site-packages'))
 sys.path.append(join(path, 'app'))
 sys.path.append('/srv/mayan/site')
-{%- if api.enabled %}
+{%- if server.api is defined and api.enabled %}
 sys.path.append(join(path, 'app/mayan_pyro_api'))
 {%- endif %}
 

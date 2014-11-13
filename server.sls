@@ -37,9 +37,12 @@ mayan_dirs:
     - /srv/mayan/document_storage/document_storage
     - /srv/mayan/document_storage/image_cache
     - /srv/mayan/document_storage/gpg_home
+    {%- if server.storage_location is defined %}
+    - {{ server.storage_location }}
+    {%- endif %}
   - user: mayan
   - group: mayan
-  - mode: 775
+  - mode: 660
   - makedirs: true
   - require:
     - virtualenv: /srv/mayan
@@ -94,6 +97,14 @@ app_dirs:
   - mode: 644
   - require:
     - file: /srv/mayan/site/manage.py
+
+/srv/mayan/site/wsgi.py:
+  file.managed:
+  - source: salt://mayan/conf/server.wsgi
+  - template: jinja
+  - mode: 644
+  - require:
+    - file: /srv/mayan/site/local_settings.py
 
 mayan_sync_database:
   cmd.run:

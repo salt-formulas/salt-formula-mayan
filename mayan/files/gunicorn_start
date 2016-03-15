@@ -1,8 +1,8 @@
 #!/bin/bash
-{%- set server = pillar.mayan.server %}
+{% from "mayan/map.jinja" import server with context %}
 
 NAME="mayan"
-DJANGODIR=/srv/mayan/site
+DJANGODIR={{ server.dir.base }}/site
 USER=mayan
 GROUP=mayan
 NUM_WORKERS={{ server.workers }}
@@ -13,13 +13,13 @@ DJANGO_WSGI_MODULE=wsgi
 
 # Activate the virtual environment
 cd $DJANGODIR
-source /srv/mayan/bin/activate
+source {{ server.dir.base }}/bin/activate
 export DJANGO_SETTINGS_MODULE=$DJANGO_SETTINGS_MODULE
 export PYTHONPATH=$DJANGODIR:$PYTHONPATH
 
 # Start your Django Unicorn
 # Programs meant to be run under supervisor should not daemonize themselves (do not use --daemon)
-exec /srv/mayan/bin/gunicorn ${DJANGO_WSGI_MODULE}:application \
+exec {{ server.dir.base }}/bin/gunicorn ${DJANGO_WSGI_MODULE}:application \
   --name $NAME \
   --workers $NUM_WORKERS \
   --user=$USER --group=$GROUP \

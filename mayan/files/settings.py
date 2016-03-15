@@ -47,7 +47,8 @@ USE_TZ = True
 PROJECT_TITLE = 'Mayan EDMS'
 PROJECT_NAME = 'mayan'
 
-MEDIA_ROOT = "/srv/jachym/media" #document_storage
+MEDIA_ROOT = "{{ server.dir.base }}/media" #document_storage
+STATIC_ROOT = "{{ server.dir.base }}/static" #document_storage
 
 MAIN_DISABLE_HOME_VIEW = True
 

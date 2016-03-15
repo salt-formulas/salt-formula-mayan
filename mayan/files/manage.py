@@ -7,11 +7,11 @@ import os
 
 from os.path import join, dirname, abspath, normpath
 
-path = '/srv/mayan'
+path = '{{ server.dir.base }}'
 
 sys.path.append(join(path, 'lib', 'python2.7', 'site-packages'))
 sys.path.append(join(path, 'app'))
-sys.path.append('/srv/mayan/site')
+sys.path.append('{{ server.dir.base }}')
 {%- if server.api is defined and api.enabled %}
 sys.path.append(join(path, 'app/mayan_pyro_api'))
 {%- endif %}

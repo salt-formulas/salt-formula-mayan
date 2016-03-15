@@ -1,0 +1,28 @@
+applications:
+- mayan
+parameters:
+  mayan:
+    server:
+      enabled: true
+      workers: 3
+      bind:
+        address: ${linux:network:fqdn}
+        port: 9753
+      source:
+        type: git
+        address: 'https://gitlab.com/mayan-edms/mayan-edms.git'
+        revision: series/2.0
+      database:
+        engine: 'postgresql'
+        host: 'localhost'
+        port: 5432
+        name: 'mayan'
+        password: '${_param:postgresql_mayan_password}'
+        user: 'mayan'
+    api:
+      enabled: true
+      hmac_key: ${_param:mayan_hmac_key}
+      uri_id: ${_param:mayan_uri_id}
+      bind:
+        port: 33333
+        host: 0.0.0.0

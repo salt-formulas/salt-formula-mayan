@@ -1,7 +1,10 @@
 
 {% set server = salt['grains.filter_by']({
     'Debian': {
-        'pkgs': [ 'git-core', 'gcc', 'tesseract-ocr', 'unpaper', 'python-virtualenv', 'ghostscript', 'libjpeg-dev', 'libpng-dev', 'poppler-utils', 'python-dev', 'libpq-dev', "tesseract-ocr-ces", "tesseract-ocr", "imagemagick", "graphicsmagick", "unpaper", "poppler-utils", "unoconv" ]
+        'pkgs': [ 'git-core', 'gcc', 'tesseract-ocr', 'unpaper', 'python-virtualenv', 'ghostscript', 'libjpeg-dev', 'libpng-dev', 'poppler-utils', 'python-dev', 'libpq-dev', "tesseract-ocr-ces", "tesseract-ocr", "imagemagick", "graphicsmagick", "unpaper", "poppler-utils", "unoconv" ],
+        'dir': {
+        	'base': '/usr/lib/mayan-edms',
+        	}
     },
     'RedHat': {
         'pkgs': []
@@ -10,6 +13,13 @@
 
 
 {% set api = salt['grains.filter_by']({
-    'Debian': {},
+    'Debian': {
+        'dir': {
+            'base': '/usr/lib/mayan-edms',
+            },
+        'source': {
+            'address': 'https://github.com/openode/mayan_pyro_api.git'
+        }
+    },
     'RedHat': {},
 }, merge=salt['pillar.get']('mayan:api')) %}

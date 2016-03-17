@@ -1,10 +1,15 @@
-# Mayan
+=====
+Mayan
+=====
 
 Document management without the headaches.
 
 Automated OCR of documents, automatic categorization, flexible metadata, extensive access control, Mayan EDMS has all this to offers and many more features to help you tame your documents.
 
-## Sample pillar
+Sample pillar
+-------------
+
+.. code-block:: yaml
 
     mayan:
       server:
@@ -33,7 +38,10 @@ Automated OCR of documents, automatic categorization, flexible metadata, extensi
           host: 0.0.0.0
 
 
-## Sample pillar with specific folder for documents
+Sample pillar with specific folder for documents
+------------------------------------------------
+
+.. code-block:: yaml
 
     mayan:
       server:
@@ -62,7 +70,8 @@ Automated OCR of documents, automatic categorization, flexible metadata, extensi
           port: 33333
           host: 0.0.0.0
 
-## Read more
+Read more
+---------
 
 * http://www.mayan-edms.com/
 * http://openode.readthedocs.org/

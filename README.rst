@@ -1,13 +1,15 @@
-=====
-Mayan
-=====
 
-Document management without the headaches.
+=============
+Mayan Formula
+=============
 
-Automated OCR of documents, automatic categorization, flexible metadata, extensive access control, Mayan EDMS has all this to offers and many more features to help you tame your documents.
+Automated OCR of documents, automatic categorization, flexible metadata,
+extensive access control, Mayan EDMS has all this to offers and many more
+features to help you tame your documents.
 
-Sample pillar
--------------
+
+Sample pillars
+==============
 
 .. code-block:: yaml
 
@@ -37,9 +39,7 @@ Sample pillar
           port: 33333
           host: 0.0.0.0
 
-
 Sample pillar with specific folder for documents
-------------------------------------------------
 
 .. code-block:: yaml
 
@@ -70,14 +70,15 @@ Sample pillar with specific folder for documents
           port: 33333
           host: 0.0.0.0
 
-Read more
----------
+More Information
+================
 
 * http://www.mayan-edms.com/
 * http://openode.readthedocs.org/
 * https://github.com/openode/mayan_pyro_api
 * http://mayan.readthedocs.org/en/latest/intro/installation.html
 * https://openode.readthedocs.org/en/latest/install_mayan_server.html
+
 Documentation and Bugs
 ======================
 
